@@ -1,0 +1,56 @@
+# Two checks, both quick:
+#   css       the stylesheet follows the standard (stylelint)
+#   jellyfin  the classes it styles still exist in the newest Jellyfin, and Jellyfin has not gained
+#             more fixed blue (tools/check.py: a text comparison, Jellyfin does not run)
+# They run on every push and pull request, and every Monday against whatever Jellyfin has released
+# since. A Monday run that finds drift opens an issue (once).
+name: Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  css:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+
+  jellyfin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Take the web client of the newest Jellyfin
+        run: |
+          docker pull --quiet jellyfin/jellyfin:latest
+          id=$(docker create jellyfin/jellyfin:latest)
+          docker cp "$id":/jellyfin/jellyfin-web web
+          docker rm "$id"
+      - name: Check the theme against it
+        run: python3 tools/check.py web
+      - name: Open an issue when the Monday run finds drift
+        if: failure() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Jellyfin has changed: the theme needs a look"
+          open=$(gh issue list --state open --search "$title in:title" --json number --jq '.[0].number')
+          if [ -z "$open" ]; then
+            gh issue create --title "$title" \
+              --body "The weekly check found drift against the newest Jellyfin. See the run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          fi

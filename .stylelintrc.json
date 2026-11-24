@@ -1,0 +1,22 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": null,
+    "no-descending-specificity": null,
+    "custom-property-pattern": [
+      "^(jf-.+|[a-z][a-z0-9]*(-[a-z0-9]+)*)$",
+      { "message": "Use kebab-case, or the jf- prefix of Jellyfin's own variables" }
+    ],
+    "length-zero-no-unit": [true, { "ignore": ["custom-properties"] }],
+    "property-no-vendor-prefix": [true, { "ignoreProperties": ["backdrop-filter"] }],
+    "property-no-unknown": [
+      true,
+      { "ignoreProperties": ["position-try-order", "position-try-fallbacks"] }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      { "ignorePseudoElements": ["picker", "picker-icon", "checkmark"] }
+    ],
+    "declaration-property-value-no-unknown": null
+  }
+}

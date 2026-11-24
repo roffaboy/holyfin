@@ -1,0 +1,11 @@
+{
+  "name": "holyfin",
+  "version": "0.1.0",
+  "private": true,
+  "description": "An unofficial dark Jellyfin theme inspired by HolyArrs: square corners, one red accent, Geist.",
+  "scripts": {
+    "lint": "stylelint theme.css",
+    "check": "python3 tools/check.py"
+  },
+  "license": "MIT"
+}
