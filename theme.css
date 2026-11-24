@@ -236,6 +236,9 @@ body,
 /* Jellyfin's React parts (the dashboard, settings) set their own font on their text, so the
    typeface is named there too. */
 .MuiTypography-root,
+.MuiFormHelperText-root,
+.MuiFormControlLabel-label,
+.MuiSelect-select,
 .MuiButton-root,
 .MuiMenuItem-root,
 .MuiListItemText-root,
@@ -466,6 +469,17 @@ a {
   background-color: var(--surface-2);
 }
 
+/* A card without a picture (a profile without a photo) gets a quiet surface, not a colour per
+   card. */
+[class*="defaultCardBackground"] {
+  background-color: var(--surface-3) !important;
+}
+
+/* On hover Jellyfin lays a link over the picture; it must not paint over it. */
+a.cardImageContainer {
+  background-color: transparent;
+}
+
 /* Hover and focus, like the cards on HolyArrs' site: the card moves up 2px and a solid red block
    shows behind it, down and to the right. Not to the left (the first card of a row would run into
    the edge), and whole pixels only (a scale puts edges on half pixels and one side can fade). */
@@ -557,6 +571,10 @@ a {
   padding-top: .6em;
   padding-bottom: .6em;
   box-sizing: border-box;
+
+  /* Jellyfin lets the band run 3.3vw under the picture, which shows as a stub below a landscape
+     picture (an episode); it now starts at the picture's right edge. */
+  clip-path: inset(0 0 0 3.3vw);
 }
 
 /* The title block sits in the middle of the band. Jellyfin leaves a margin above the title and
@@ -570,6 +588,28 @@ a {
 
 .layout-desktop .infoWrapper .itemName {
   margin: 0 0 0.3em;
+}
+
+/* A series, season or episode has two lines: the name above, then the title. Both start at the same
+   edge, the title wraps instead of running into the buttons, and the name is the quieter one. */
+.infoWrapper .parentName,
+.infoWrapper .itemName {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+.infoWrapper .parentName {
+  color: var(--muted);
+  font-size: var(--t-title3);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: .15em;
+}
+
+.infoWrapper .itemName.subtitle {
+  font-size: var(--t-title1);
 }
 
 .layout-desktop .infoWrapper .itemMiscInfo {
@@ -599,6 +639,15 @@ a {
   color: var(--text);
 }
 
+/* The labels Jellyfin Enhanced puts on a poster when you hover it: one quiet style, not a colour
+   per kind (written with extra specificity: the plugin colours them with a longer selector). */
+.quality-overlay-container .quality-overlay-label[class] {
+  background: rgb(12 12 12 / 80%) !important;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: var(--radius) !important;
+  color: #fff !important;
+}
+
 /* "Also available on" (Jellyfin Enhanced) sets white text on a dark layer in the page itself. */
 .streaming-lookup-container > div {
   background: var(--surface) !important;
@@ -624,7 +673,8 @@ a {
   padding: .9em 1.2em .5em;
 }
 
-.itemDetailsGroup:empty {
+.itemDetailsGroup:empty,
+.itemDetailsGroup:not(:has(.detailsGroupItem:not(.hide))) {
   display: none;
 }
 
@@ -637,6 +687,23 @@ a {
   font-weight: 600;
   letter-spacing: .06em;
   text-transform: uppercase;
+}
+
+/* The settings and profile pages start right under the top bar in Jellyfin; give them room. */
+.libraryPage.userPreferencesPage.noSecondaryNavPage:not([id="myPreferencesMenuPage"]) {
+  padding-top: 2.5em !important;
+}
+
+/* The second button on a form or on the sign-in page (Manual Login, Delete Image, Cancel) is outlined, so
+   next to the white main button it reads as a button and not as something switched off. */
+button.raised:not(.button-submit) {
+  background: transparent !important;
+  border: 1px solid var(--line-strong) !important;
+  color: var(--text) !important;
+}
+
+button.raised:not(.button-submit):hover {
+  background: var(--hover) !important;
 }
 
 /* ---------- 8. Menus, dialogs, inputs, drop-down lists ---------- */
@@ -684,6 +751,13 @@ a {
   background: var(--scrim) !important;
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
+}
+
+/* A drop-down menu has an invisible backdrop; only a dialog dims and blurs the page. */
+.MuiBackdrop-invisible {
+  background: transparent !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
 }
 
 .listItem,
