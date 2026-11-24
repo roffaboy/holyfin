@@ -596,6 +596,25 @@ a {
   background: var(--surface) !important;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  color: var(--text);
+}
+
+/* "Also available on" (Jellyfin Enhanced) sets white text on a dark layer in the page itself. */
+.streaming-lookup-container > div {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+.streaming-lookup-container a,
+.streaming-lookup-container button {
+  color: var(--text) !important;
+}
+
+.streaming-lookup-container button {
+  border-color: var(--line-strong) !important;
 }
 
 .itemDetailsGroup,
