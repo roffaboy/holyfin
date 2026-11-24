@@ -20,7 +20,58 @@
  *  10  Fixed blues        the few places Jellyfin does not take its blue from the palette
  *  11  Reduced motion
  */
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400..700&display=swap");
+
+/* Geist, delivered with the theme (fonts/, SIL Open Font License), so nothing is loaded from Google. */
+
+/* cyrillic-ext */
+@font-face {
+  font-family: Geist;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/Geist-cyrillic-ext.woff2") format("woff2");
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* cyrillic */
+@font-face {
+  font-family: Geist;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/Geist-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+/* vietnamese */
+@font-face {
+  font-family: Geist;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/Geist-vietnamese.woff2") format("woff2");
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+
+/* latin-ext */
+@font-face {
+  font-family: Geist;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/Geist-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* latin */
+@font-face {
+  font-family: Geist;
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/Geist-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 
 /* ---------- 1. Tokens ---------- */
 :root {
@@ -29,9 +80,9 @@
   --surface: #161618;
   --surface-2: #1e1e21;
   --surface-3: #2a2a2e;
-  --glass: rgba(22, 22, 24, .86);
-  --line: rgba(255, 255, 255, .09);
-  --line-strong: rgba(255, 255, 255, .18);
+  --glass: rgb(22 22 24 / 86%);
+  --line: rgb(255 255 255 / 9%);
+  --line-strong: rgb(255 255 255 / 18%);
   --edge: #e6e8ee;
   --text: #f5f5f7;
   --muted: #a1a1a6;
@@ -39,10 +90,10 @@
   --accent: #ff453a;
   --accent-light: #ff6b61;
   --accent-fill: #d42d24;
-  --accent-soft: rgba(255, 69, 58, .16);
+  --accent-soft: rgb(255 69 58 / 16%);
   --on-light: #1d1d1f;
-  --scrim: rgba(0, 0, 0, .6);
-  --hover: rgba(255, 255, 255, .08);
+  --scrim: rgb(0 0 0 / 60%);
+  --hover: rgb(255 255 255 / 8%);
   --mark-have: #1f9d48;
 
   /* Shape. Square; raise it and the rounded things (buttons, panels, fields) follow. */
@@ -54,7 +105,7 @@
   --on-art-scrim: rgb(0 0 0 / 86%);
 
   /* Type: the scale of HolyArrs. */
-  --font: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font: "Geist", -apple-system, blinkmacsystemfont, "Segoe UI", system-ui, sans-serif;
   --t-large: 34px;
   --t-title1: 28px;
   --t-title2: 22px;
@@ -74,6 +125,7 @@
 }
 
 /* ---------- 2. Jellyfin palette ---------- */
+
 /* Jellyfin draws its blue (focus, links, selection, switches, buttons, notifications, the "info"
    tints of the dashboard) from these variables. Pointing them at the accent turns it all red, and
    the greys follow the tokens above. */
@@ -106,6 +158,7 @@ html {
   color-scheme: dark;
   accent-color: var(--accent);
 }
+
 html,
 body,
 button,
@@ -118,10 +171,12 @@ textarea,
   font-feature-settings: "ss01" 0, "cv11" 0;
   -webkit-font-smoothing: antialiased;
 }
+
 body {
   font-size: var(--t-body);
   line-height: 1.5;
 }
+
 html,
 body,
 .skinBody,
@@ -133,9 +188,10 @@ body,
   background-color: var(--bg) !important;
   color: var(--text);
 }
+
 /* Icons keep their own font. */
 .material-icons {
-  font-family: "Material Icons" !important;
+  font-family: "Material Icons", sans-serif !important;
   letter-spacing: normal;
   font-feature-settings: normal;
 }
@@ -151,18 +207,21 @@ h3,
   font-weight: 700;
   text-wrap: balance;
 }
+
 .itemName,
 .detailPagePrimaryContainer .itemName {
   font-size: var(--t-large);
   line-height: 1.12;
   letter-spacing: -.022em;
 }
+
 h1,
 .pageTitle {
   font-size: var(--t-title1);
   line-height: 1.15;
   letter-spacing: -.02em;
 }
+
 .sectionTitle,
 .sectionTitle-cards,
 h2 {
@@ -170,12 +229,14 @@ h2 {
   line-height: 1.2;
   letter-spacing: -.018em;
 }
+
 h3 {
   font-size: var(--t-title3);
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -.014em;
 }
+
 .overview,
 .itemOverview,
 .detailSectionContent,
@@ -183,6 +244,7 @@ h3 {
   font-size: var(--t-body);
   line-height: 1.5;
 }
+
 .mediaInfoItem,
 .cardIndicators,
 .itemMiscInfo,
@@ -191,19 +253,23 @@ h3 {
   font-size: var(--t-subhead);
   font-weight: 500;
 }
+
 /* Digits of equal width, so year, time and scores line up. */
 .itemMiscInfo,
 .mediaInfoItem,
 .cardText-secondary {
   font-variant-numeric: tabular-nums;
 }
+
 a {
   color: var(--text);
 }
+
 ::selection {
   background: var(--accent);
   color: #fff;
 }
+
 ::placeholder {
   color: var(--faint);
 }
@@ -212,11 +278,13 @@ a {
 .page:not(.hide) {
   animation: jf-in var(--dur-slow) var(--ease-out) both;
 }
+
 @keyframes jf-in {
   from {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -228,15 +296,18 @@ a {
   scrollbar-width: thin;
   scrollbar-color: var(--surface-3) transparent;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--surface-3);
 }
 
 /* ---------- 4. Top bar and tabs ---------- */
+
 /* Glass a shade lighter than the page, blurred, with a fine line under it (as HolyArrs' bar). */
 .skinHeader,
 .skinHeader.semiTransparent,
@@ -248,6 +319,7 @@ a {
   border-bottom: 1px solid var(--line-strong) !important;
   box-shadow: inset 0 -1px 0 var(--line-strong) !important;
 }
+
 .headerTabs .emby-tab-button,
 .sectionTabs .emby-tab-button,
 .skinHeader .MuiButton-text {
@@ -256,18 +328,20 @@ a {
   font-weight: 500;
   transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
+
 .headerTabs .emby-tab-button:hover,
 .sectionTabs .emby-tab-button:hover,
 .skinHeader .MuiButton-text:hover {
   background: var(--hover) !important;
   color: var(--text) !important;
 }
+
 /* The chosen tab: a soft grey step with a red line under it. */
 .headerTabs .emby-tab-button-active,
 .sectionTabs .emby-tab-button-active,
 .skinHeader .MuiButton-contained,
 .skinHeader .MuiButton-colorPrimary {
-  background: rgba(255, 255, 255, .07) !important;
+  background: rgb(255 255 255 / 7%) !important;
   color: var(--text) !important;
   border: 0 !important;
   box-shadow: inset 0 -2px 0 var(--accent) !important;
@@ -281,16 +355,17 @@ a {
   border-radius: var(--radius);
   transition: background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur) var(--ease-spring), box-shadow var(--dur-fast) var(--ease-out);
 }
+
 .emby-button:active,
 .MuiButton-root:active {
   transform: scale(var(--press));
   transition-duration: 90ms;
 }
+
 /* The main button is light with dark text, as the main button in HolyArrs. */
 .button-submit,
 .MuiButton-colorPrimary,
 .btnPlay.detailButton,
-.detailButton.btnPlay,
 .upNextContainer .btnStartNow {
   background: var(--text) !important;
   color: var(--on-light) !important;
@@ -298,19 +373,23 @@ a {
   border-radius: var(--radius) !important;
   font-weight: 600;
 }
+
 .button-submit:hover,
 .MuiButton-colorPrimary:hover,
 .btnPlay.detailButton:hover {
   background: #fff !important;
 }
+
 .button-flat,
 .detailButton:not(.btnPlay) {
   border-radius: var(--radius);
 }
+
 .detailButton:not(.btnPlay):hover,
 .paper-icon-button-light:hover {
   background: var(--hover) !important;
 }
+
 .MuiButtonBase-root:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
@@ -323,6 +402,7 @@ a {
 .visualCardBox {
   border-radius: var(--radius) !important;
 }
+
 .cardScalable,
 .visualCardBox {
   background: var(--surface);
@@ -330,9 +410,11 @@ a {
   overflow: hidden;
   transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
+
 .cardImageContainer {
   background-color: var(--surface-2);
 }
+
 /* Hover and focus, like the cards on HolyArrs' site: the card moves up 2px and a solid red block
    shows behind it, down and to the right. Not to the left (the first card of a row would run into
    the edge), and whole pixels only (a scale puts edges on half pixels and one side can fade). */
@@ -344,6 +426,7 @@ a {
   border-color: transparent !important;
   box-shadow: 4px 4px 0 var(--accent-fill) !important;
 }
+
 /* The light edge is a layer on top of the picture, so all four sides show. */
 .cardScalable::after {
   content: "";
@@ -354,45 +437,54 @@ a {
   box-shadow: inset 0 0 0 2px transparent;
   transition: box-shadow var(--dur-fast) var(--ease-out);
 }
+
 .card-hoverable:hover .cardScalable::after,
 .card:focus-visible .cardScalable::after {
   box-shadow: inset 0 0 0 2px var(--edge);
 }
+
 /* Pressed: it sinks back towards the block. */
 .card-hoverable:active .cardScalable {
   transform: translateY(1px);
   box-shadow: 1px 1px 0 var(--accent-fill) !important;
   transition-duration: 60ms;
 }
+
 .cardText {
   color: var(--text);
   font-size: var(--t-callout);
   font-weight: 500;
 }
+
 .cardText-secondary {
   color: var(--muted);
   font-size: var(--t-subhead);
   font-weight: 400;
 }
+
 .cardOverlayContainer {
   background: linear-gradient(0deg, var(--on-art-scrim), rgb(0 0 0 / 0%) 60%);
   transition: opacity var(--dur) var(--ease-out);
 }
+
 /* Marks on a poster, as HolyArrs does: watched is the green of "in your library", a count is red. */
 .playedIndicator {
   background: var(--mark-have) !important;
   color: #fff !important;
 }
+
 .countIndicator {
   background: var(--accent-fill) !important;
   color: #fff !important;
 }
+
 /* Progress is always red. */
 .itemProgressBar,
 .playbackProgress {
-  background: rgba(255, 255, 255, .22) !important;
+  background: rgb(255 255 255 / 22%) !important;
   overflow: hidden;
 }
+
 .itemProgressBarForeground,
 .playbackProgress > div,
 .MuiLinearProgress-bar {
@@ -404,6 +496,7 @@ a {
 .detailImageContainer .cardBox {
   border-radius: var(--radius) !important;
 }
+
 /* The band with the title and the buttons has room: it grows downward (its top edge stays where
    Jellyfin puts it, so the logo above keeps its place) and what is in it sits in the middle. */
 .layout-desktop .detailRibbon {
@@ -414,11 +507,38 @@ a {
   padding-bottom: .6em;
   box-sizing: border-box;
 }
+
+/* The title block sits in the middle of the band. Jellyfin leaves a margin above the title and
+   under the last line (an inline style), and those margins count when the block is centred, so
+   the text looked high. The space is now only between the lines. */
+.layout-desktop .infoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.layout-desktop .infoWrapper .itemName {
+  margin: 0 0 0.3em;
+}
+
+.layout-desktop .infoWrapper .itemMiscInfo {
+  margin-bottom: 0 !important;
+}
+
+.layout-desktop .infoWrapper .itemMiscInfo-primary {
+  margin-bottom: 0.35em !important;
+}
+
+.layout-desktop .infoWrapper .itemMiscInfo:empty {
+  display: none;
+}
+
 /* The logo above the band sits higher, so there is air between the two (only up: left and right
    stay where Jellyfin has them). */
 .detailLogo {
   top: calc(10vh - 45px) !important;
 }
+
 /* Layers instead of shadows, as in HolyArrs: the page, then the band and the panels a step lighter,
    each with a fine line. */
 .detailRibbon {
@@ -426,15 +546,18 @@ a {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
+
 .itemDetailsGroup,
 .trackSelections {
   background: var(--surface);
   border: 1px solid var(--line);
   padding: .9em 1.2em .5em;
 }
+
 .itemDetailsGroup:empty {
   display: none;
 }
+
 /* Small labels are quiet capitals. */
 .detailsGroupItem .label,
 .trackSelections .selectContainer .selectLabel,
@@ -456,6 +579,7 @@ a {
   border-radius: var(--radius) !important;
   box-shadow: var(--shadow-modal) !important;
 }
+
 /* Menus that open from a button are glass, like HolyArrs' search results. */
 .MuiPopover-paper,
 .MuiMenu-paper {
@@ -466,6 +590,7 @@ a {
   backdrop-filter: saturate(180%) blur(20px);
   box-shadow: var(--shadow-lift) !important;
 }
+
 .MuiTooltip-tooltip {
   background: var(--surface-2) !important;
   border: 1px solid var(--line-strong);
@@ -474,30 +599,36 @@ a {
   font-family: var(--font);
   font-size: var(--t-footnote);
 }
+
 .MuiPaper-root {
   background-image: none !important; /* MUI's lighter tint on raised surfaces */
 }
+
 .MuiPaper-rounded,
 .MuiChip-root {
   border-radius: var(--radius) !important;
 }
+
 .dialogBackdrop,
 .MuiBackdrop-root {
   background: var(--scrim) !important;
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
+
 .listItem,
 .MuiMenuItem-root,
 .actionSheetMenuItem {
   border-radius: var(--radius);
   transition: background-color var(--dur-fast) var(--ease-out);
 }
+
 .listItem:hover,
 .MuiMenuItem-root:hover,
 .actionSheetMenuItem:hover {
   background: var(--hover) !important;
 }
+
 .emby-input,
 .emby-textarea,
 .emby-select-withcolor,
@@ -509,6 +640,7 @@ a {
   color: var(--text);
   transition: border-color var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
 }
+
 .emby-input:focus,
 .emby-textarea:focus,
 .emby-select-withcolor:focus,
@@ -517,6 +649,7 @@ a {
   box-shadow: 0 0 0 3px var(--accent-soft) !important;
   outline: none !important;
 }
+
 .emby-checkbox:checked + span + .checkboxOutline {
   background: var(--accent) !important;
   border-color: var(--accent) !important;
@@ -533,9 +666,11 @@ a {
   ::picker(select) {
     appearance: base-select !important;
   }
+
   select::picker-icon {
     display: none; /* Jellyfin draws its own arrow */
   }
+
   ::picker(select) {
     background: var(--glass);
     color: var(--text);
@@ -545,50 +680,60 @@ a {
     padding: 4px;
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
+
     /* Opens below the field; only when that does not fit does it open above (Chrome's own choice
        is the side with the most room, which put it above a field on the lower half). */
     position-try-order: normal;
     position-try-fallbacks: flip-block;
   }
+
   select option {
     background: transparent;
     color: var(--text);
     padding: .55em .8em;
     transition: background-color var(--dur-fast) var(--ease-out);
   }
+
   select option:hover,
   select option:focus-visible {
     background: var(--hover);
   }
+
   select option:checked {
-    background: rgba(255, 255, 255, .12);
+    background: rgb(255 255 255 / 12%);
     font-weight: 600;
   }
+
   select option::checkmark {
     color: var(--accent);
   }
 }
 
 /* ---------- 9. Drawers and lists ---------- */
+
 /* The chosen item is a grey step with a red icon, as HolyArrs' sidebar. */
 .mainDrawer {
   background: var(--surface) !important;
   border-right: 1px solid var(--line);
 }
+
 .navMenuOption {
   border-radius: var(--radius);
   margin: 2px 8px;
   transition: background-color var(--dur-fast) var(--ease-out);
 }
+
 .navMenuOption:hover {
   background: var(--hover) !important;
 }
+
 .navMenuOption-selected,
 .MuiListItemButton-root.Mui-selected,
 .MuiListItemButton-root.Mui-selected:hover {
   background: var(--surface-3) !important;
   color: var(--text) !important;
 }
+
 .navMenuOption-selected .navMenuOptionIcon,
 .navMenuOption-selected .material-icons,
 .MuiListItemButton-root.Mui-selected .MuiListItemIcon-root {
@@ -596,62 +741,77 @@ a {
 }
 
 /* ---------- 10. Fixed blues ---------- */
+
 /* Places where Jellyfin's own stylesheets write the blue (#00a4dc, #03a9f4) instead of taking it
    from the palette: switches, sliders, radio buttons, loading circles, list icons, indicators. */
 .mdl-switch__input:checked + .mdl-switch__label + .mdl-switch__trackContainer > .mdl-switch__thumb {
   background: var(--accent) !important;
 }
+
 .mdl-switch__input:checked + .mdl-switch__label + .mdl-switch__trackContainer > .mdl-switch__track {
-  background: rgba(255, 69, 58, .5) !important;
+  background: rgb(255 69 58 / 50%) !important;
 }
+
 .mdl-slider {
   color: var(--accent) !important;
 }
+
 .mdl-slider::-webkit-slider-thumb {
   background: var(--accent) !important;
 }
+
 .mdl-slider::-moz-range-thumb {
   background: var(--accent) !important;
 }
+
 .mdl-slider-background-lower,
 .sliderMarker.watched,
 .iconOsdProgressInner {
   background: var(--accent) !important;
 }
+
 .mdl-radio.show-focus .mdl-radio__button:focus + .mdl-radio__circles .mdl-radio__outer-circle,
 .mdl-radio.show-focus .mdl-radio__button:focus + .mdl-radio__circles .mdl-radio__inner-circle {
   color: var(--accent) !important;
 }
+
 .mdl-radio__focus-circle {
   background: var(--accent) !important;
 }
+
 .mdl-spinner__layer-1,
 .mdl-spinner__layer-2,
 .mdl-spinner__layer-3,
 .mdl-spinner__layer-4 {
   border-color: var(--accent) !important;
 }
+
 progress::-webkit-progress-value {
   background-color: var(--accent);
 }
+
 progress::-moz-progress-bar {
   background-color: var(--accent);
 }
+
 .listItemImageButton:hover,
 .button-accent-flat {
   color: var(--accent) !important;
 }
+
 .listItemIcon:not(.listItemIcon-transparent),
 .subtitleFeaturePillow,
 .lyricsFeaturePillow,
 .jstree-default .jstree-wholerow-clicked {
   background: var(--accent-fill) !important;
 }
+
 .filterIndicator {
   background: var(--accent) !important;
 }
 
 /* ---------- 11. Reduced motion ---------- */
+
 /* Anyone who asked their system for less motion gets none. */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -69,7 +69,8 @@ Then change the table above, and tag a new version.
 ## Credits
 
 - Look: [HolyArrs](https://github.com/HolyArrs/HolyArrs) (colours and ideas, no code).
-- Font: [Geist](https://github.com/vercel/geist-font) by Vercel, under the SIL Open Font License.
+- Font: [Geist](https://github.com/vercel/geist-font) by Vercel, under the SIL Open Font License. It is delivered with
+  the theme in `fonts/` (with its licence, `fonts/OFL.txt`), so nothing is loaded from Google.
 
 ## Licence
 

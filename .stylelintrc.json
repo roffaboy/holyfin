@@ -8,7 +8,7 @@
       { "message": "Use kebab-case, or the jf- prefix of Jellyfin's own variables" }
     ],
     "length-zero-no-unit": [true, { "ignore": ["custom-properties"] }],
-    "property-no-vendor-prefix": [true, { "ignoreProperties": ["backdrop-filter"] }],
+    "property-no-vendor-prefix": [true, { "ignoreProperties": ["-webkit-backdrop-filter"] }],
     "property-no-unknown": [
       true,
       { "ignoreProperties": ["position-try-order", "position-try-fallbacks"] }
