@@ -1,1 +1,1 @@
-.streaming-lookup-container
+streaming-lookup-container
