@@ -2,9 +2,11 @@
 
 [![Check](https://img.shields.io/github/actions/workflow/status/roffaboy/holyfin/check.yml?branch=main&style=flat&logo=githubactions&logoColor=white&label=Check)](https://github.com/roffaboy/holyfin/actions/workflows/check.yml) [![Release](https://img.shields.io/github/v/release/roffaboy/holyfin?style=flat&logo=github&logoColor=white&label=Release)](https://github.com/roffaboy/holyfin/releases/latest) [![Last commit](https://img.shields.io/github/last-commit/roffaboy/holyfin?style=flat&logo=github&logoColor=white&label=Last%20commit)](https://github.com/roffaboy/holyfin/commits/main) [![Renovate](https://img.shields.io/badge/Renovate-enabled-308BE3?style=flat&logo=renovate&logoColor=white)](renovate.json) [![Licence](https://img.shields.io/github/license/roffaboy/holyfin?style=flat&label=Licence)](LICENSE)
 
-A calm, dark theme for [Jellyfin](https://jellyfin.org). Near-black greys, one red accent, square
-corners and [Geist](https://github.com/vercel/geist-font), after the look of
-[HolyArrs](https://github.com/HolyArrs/HolyArrs).
+A calm theme for [Jellyfin](https://jellyfin.org), dark and light. Dark is near-black greys, light is
+white with soft greys; both have one red accent, square corners and
+[Geist](https://github.com/vercel/geist-font), after the look of
+[HolyArrs](https://github.com/HolyArrs/HolyArrs). Which one shows follows Jellyfin's own Theme
+setting.
 
 It is one stylesheet, written from scratch: no other theme sits under it. Nothing is installed on
 the server, and it works in the web client and in the apps built on it.
