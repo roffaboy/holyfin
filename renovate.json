@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "schedule:weekly", "group:all"],
+  "packageRules": [
+    {
+      "description": "Patch updates merge by themselves once the checks pass",
+      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "groupName": "patch updates",
+      "automerge": true
+    }
+  ]
+}

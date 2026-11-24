@@ -1,8 +1,6 @@
 # Holyfin
 
-[![Check](https://github.com/roffaboy/holyfin/actions/workflows/check.yml/badge.svg)](https://github.com/roffaboy/holyfin/actions/workflows/check.yml)
-[![Licence: MIT](https://img.shields.io/badge/licence-MIT-informational.svg)](LICENSE)
-![Jellyfin 12.4](https://img.shields.io/badge/Jellyfin-12.4-00a4dc?logoColor=white)
+[![Check](https://img.shields.io/github/actions/workflow/status/roffaboy/holyfin/check.yml?branch=main&style=flat&logo=githubactions&logoColor=white&label=Check)](https://github.com/roffaboy/holyfin/actions/workflows/check.yml) [![Release](https://img.shields.io/github/v/release/roffaboy/holyfin?style=flat&logo=github&logoColor=white&label=Release)](https://github.com/roffaboy/holyfin/releases/latest) [![Last commit](https://img.shields.io/github/last-commit/roffaboy/holyfin?style=flat&logo=github&logoColor=white&label=Last%20commit)](https://github.com/roffaboy/holyfin/commits/main) [![Renovate](https://img.shields.io/badge/Renovate-enabled-308BE3?style=flat&logo=renovate&logoColor=white)](renovate.json) [![Licence](https://img.shields.io/github/license/roffaboy/holyfin?style=flat&label=Licence)](LICENSE)
 
 A calm, dark theme for [Jellyfin](https://jellyfin.org). Near-black greys, one red accent, square
 corners and [Geist](https://github.com/vercel/geist-font), after the look of
@@ -47,7 +45,8 @@ In Jellyfin, open **Dashboard, General, Custom CSS** and add:
 ```
 
 Name a version (`@v0.1.0`), not `@main`. A version never changes under you, and the CDN keeps it.
-Reload the page with Ctrl+Shift+R.
+The newest one is on the [Releases page](https://github.com/roffaboy/holyfin/releases/latest), with
+what changed. Reload Jellyfin with Ctrl+Shift+R after you change it.
 
 With a tool that sets Jellyfin's branding for you (for example Ansible), put that one line in the
 Custom CSS setting.
