@@ -87,7 +87,8 @@ face), change the tokens and import your copy.
 
 | Holyfin | Jellyfin |
 | ------- | -------- |
-| 0.1.x   | 12.4     |
+| 0.2.x   | 12.4     |
+| 0.1.x   | 12.4 (dark only) |
 
 Holyfin is made and tested on **Jellyfin 12.4**. Older versions are not tested. Jellyfin's styles
 are built from class names that can change between versions, so every week the theme is checked

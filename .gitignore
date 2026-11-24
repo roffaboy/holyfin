@@ -1,5 +1,4 @@
 node_modules/
-archive/
 web/
 *.log
 .DS_Store
