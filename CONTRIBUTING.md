@@ -31,7 +31,8 @@ When the weekly check finds drift, or after you update Jellyfin yourself:
 1. Run the checks above against the new version and fix what they report.
 2. Look at the pages by eye (the checks find what was renamed, not what looks wrong): home and a
    poster on hover, a library, a film page, a drop-down list, a dialog and a menu, the dashboard,
-   a settings page and the sign-in page. Nothing should be blue and nothing rounded.
+   a settings page and the sign-in page, in the dark look and in the light one (Settings, Display,
+   Theme). Nothing should be blue and nothing rounded.
 3. If you are happy with it, run `python3 tools/check.py <dir> --update-baseline` and commit the result.
 4. Change the version table in the README and release (below).
 

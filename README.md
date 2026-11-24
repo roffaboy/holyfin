@@ -35,6 +35,9 @@ Screenshots (add them in docs/screenshots/, then remove this comment):
 - **Calm motion** in one set of durations and curves, and none at all for anyone who asked their
   system for less motion.
 - **Square corners.** One setting (`--radius`) if you would rather have them round.
+- **A light look too.** It follows Jellyfin's own setting: pick **Light** under Settings, Display,
+  Theme and Holyfin turns light (the light palette of HolyArrs); pick **Dark** and it is dark.
+  Every other Jellyfin theme shows the dark look. Each person chooses for themselves.
 
 ## Install
 
@@ -61,7 +64,8 @@ tags in all four corners, which suits the theme.
 
 ## Change it
 
-Everything below the first section of `theme.css` reads from the tokens at the top.
+Everything below the first section of `theme.css` reads from the tokens at the top. The dark set is
+`:root`; the light set, the same names with other colours, is `:root[data-theme="light"]` right below it.
 
 | Token | What it is | Default |
 | ----- | ---------- | ------- |

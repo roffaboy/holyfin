@@ -75,7 +75,8 @@
 
 /* ---------- 1. Tokens ---------- */
 :root {
-  /* Colour: near-black greys and one red (the dark palette of HolyArrs). */
+  /* Colour: near-black greys and one red (the dark palette of HolyArrs). This is the look by default;
+     the light one follows right below. */
   --bg: #0b0b0c;
   --surface: #161618;
   --surface-2: #1e1e21;
@@ -91,9 +92,14 @@
   --accent-light: #ff6b61;
   --accent-fill: #d42d24;
   --accent-soft: rgb(255 69 58 / 16%);
-  --on-light: #1d1d1f;
+  --accent-rgb: 255 69 58;
+  --btn-ink: #1d1d1f;
+  --btn-hover: #fff;
   --scrim: rgb(0 0 0 / 60%);
   --hover: rgb(255 255 255 / 8%);
+  --tab-active: rgb(255 255 255 / 7%);
+  --checked: rgb(255 255 255 / 12%);
+  --color-scheme: dark;
   --mark-have: #1f9d48;
 
   /* Shape. Square; raise it and the rounded things (buttons, panels, fields) follow. */
@@ -124,6 +130,37 @@
   --press: .97;
 }
 
+/* The light look, for anyone who picks Light in Jellyfin (Settings, Display, Theme): Jellyfin puts
+   data-theme="light" on the page, and these are the same tokens in the light palette of HolyArrs.
+   Every other Jellyfin theme shows the dark look above. */
+:root[data-theme="light"] {
+  --bg: #fff;
+  --surface: #f6f6f7;
+  --surface-2: #f2f2f4;
+  --surface-3: #e9e9ec;
+  --glass: rgb(246 246 247 / 86%);
+  --line: rgb(0 0 0 / 8%);
+  --line-strong: rgb(0 0 0 / 16%);
+  --edge: #1d1d1f;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --faint: #8e8e93;
+  --accent: #e5352b;
+  --accent-light: #ef5b52;
+  --accent-fill: #d42d24;
+  --accent-soft: rgb(229 53 43 / 10%);
+  --accent-rgb: 229 53 43;
+  --btn-ink: #fff;
+  --btn-hover: #000;
+  --scrim: rgb(0 0 0 / 40%);
+  --hover: rgb(0 0 0 / 5%);
+  --tab-active: rgb(0 0 0 / 6%);
+  --checked: rgb(0 0 0 / 8%);
+  --color-scheme: light;
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 8%), 0 12px 28px rgb(0 0 0 / 14%), 0 0 0 1px var(--line);
+  --shadow-modal: 0 24px 64px rgb(0 0 0 / 24%), 0 0 0 1px var(--line);
+}
+
 /* ---------- 2. Jellyfin palette ---------- */
 
 /* Jellyfin draws its blue (focus, links, selection, switches, buttons, notifications, the "info"
@@ -133,17 +170,17 @@ html:root {
   --jf-palette-primary-main: var(--accent) !important;
   --jf-palette-primary-light: var(--accent-light) !important;
   --jf-palette-primary-dark: var(--accent-fill) !important;
-  --jf-palette-primary-mainChannel: 255 69 58 !important;
+  --jf-palette-primary-mainChannel: var(--accent-rgb) !important;
   --jf-palette-primary-contrastText: #fff !important;
   --jf-palette-secondary-main: var(--accent) !important;
   --jf-palette-secondary-light: var(--accent-light) !important;
   --jf-palette-secondary-dark: var(--accent-fill) !important;
-  --jf-palette-secondary-mainChannel: 255 69 58 !important;
+  --jf-palette-secondary-mainChannel: var(--accent-rgb) !important;
   --jf-palette-secondary-contrastText: #fff !important;
   --jf-palette-info-main: var(--accent) !important;
   --jf-palette-info-light: var(--accent-light) !important;
   --jf-palette-info-dark: var(--accent-fill) !important;
-  --jf-palette-info-mainChannel: 255 69 58 !important;
+  --jf-palette-info-mainChannel: var(--accent-rgb) !important;
   --jf-palette-info-contrastText: #fff !important;
   --jf-palette-background-default: var(--bg) !important;
   --jf-palette-background-paper: var(--surface) !important;
@@ -155,7 +192,7 @@ html:root {
 
 /* ---------- 3. Base ---------- */
 html {
-  color-scheme: dark;
+  color-scheme: var(--color-scheme);
   accent-color: var(--accent);
 }
 
@@ -341,7 +378,7 @@ a {
 .sectionTabs .emby-tab-button-active,
 .skinHeader .MuiButton-contained,
 .skinHeader .MuiButton-colorPrimary {
-  background: rgb(255 255 255 / 7%) !important;
+  background: var(--tab-active) !important;
   color: var(--text) !important;
   border: 0 !important;
   box-shadow: inset 0 -2px 0 var(--accent) !important;
@@ -368,7 +405,7 @@ a {
 .btnPlay.detailButton,
 .upNextContainer .btnStartNow {
   background: var(--text) !important;
-  color: var(--on-light) !important;
+  color: var(--btn-ink) !important;
   border: 0 !important;
   border-radius: var(--radius) !important;
   font-weight: 600;
@@ -377,7 +414,7 @@ a {
 .button-submit:hover,
 .MuiButton-colorPrimary:hover,
 .btnPlay.detailButton:hover {
-  background: #fff !important;
+  background: var(--btn-hover) !important;
 }
 
 .button-flat,
@@ -700,7 +737,7 @@ a {
   }
 
   select option:checked {
-    background: rgb(255 255 255 / 12%);
+    background: var(--checked);
     font-weight: 600;
   }
 
@@ -749,7 +786,7 @@ a {
 }
 
 .mdl-switch__input:checked + .mdl-switch__label + .mdl-switch__trackContainer > .mdl-switch__track {
-  background: rgb(255 69 58 / 50%) !important;
+  background: rgb(var(--accent-rgb) / 50%) !important;
 }
 
 .mdl-slider {
