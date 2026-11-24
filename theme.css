@@ -233,6 +233,20 @@ body,
   font-feature-settings: normal;
 }
 
+/* Jellyfin's React parts (the dashboard, settings) set their own font on their text, so the
+   typeface is named there too. */
+.MuiTypography-root,
+.MuiButton-root,
+.MuiMenuItem-root,
+.MuiListItemText-root,
+.MuiTab-root,
+.MuiChip-root,
+.MuiTableCell-root,
+.MuiInputBase-root,
+.MuiFormLabel-root {
+  font-family: var(--font) !important;
+}
+
 /* Headings: size, weight and tracking per level, tighter as they grow. */
 h1,
 h2,
