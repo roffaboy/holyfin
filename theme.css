@@ -653,6 +653,15 @@ a.cardImageContainer {
   top: calc(10vh - 45px) !important;
 }
 
+/* Most logos are white, which disappears on the light page. In the light look the near-white parts
+   of a logo turn black and every other colour stays as it is. CSS cannot look at a picture, so this
+   is a filter that works per pixel: where red, green and blue average above 83%, the pixel goes
+   black (the alpha row of the matrix is 2r + 2g + 2b - 5). Browsers that do not take a filter from
+   a data address just keep the logo as it is. */
+:root[data-theme="light"] .detailLogo {
+  filter: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter%20id='w'%20color-interpolation-filters='sRGB'%3E%3CfeColorMatrix%20in='SourceGraphic'%20type='matrix'%20values='0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%202%202%202%200%20-5'%20result='mask'/%3E%3CfeComposite%20in='mask'%20in2='SourceGraphic'%20operator='in'%20result='ink'/%3E%3CfeComposite%20in='ink'%20in2='SourceGraphic'%20operator='atop'/%3E%3C/filter%3E%3C/svg%3E#w");
+}
+
 /* Layers instead of shadows, as in HolyArrs: the page, then the band and the panels a step lighter,
    each with a fine line. */
 .detailRibbon {
