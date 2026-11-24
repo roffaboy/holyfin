@@ -1,3 +1,1 @@
 streaming-lookup-container
-quality-overlay-container
-quality-overlay-label

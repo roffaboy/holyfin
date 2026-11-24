@@ -639,15 +639,6 @@ a.cardImageContainer {
   color: var(--text);
 }
 
-/* The labels Jellyfin Enhanced puts on a poster when you hover it: one quiet style, not a colour
-   per kind (written with extra specificity: the plugin colours them with a longer selector). */
-.quality-overlay-container .quality-overlay-label[class] {
-  background: rgb(12 12 12 / 80%) !important;
-  border: 1px solid rgb(255 255 255 / 18%);
-  border-radius: var(--radius) !important;
-  color: #fff !important;
-}
-
 /* "Also available on" (Jellyfin Enhanced) sets white text on a dark layer in the page itself. */
 .streaming-lookup-container > div {
   background: var(--surface) !important;
