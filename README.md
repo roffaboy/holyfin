@@ -80,49 +80,25 @@ face), change the tokens and import your copy.
 
 | Holyfin | Jellyfin |
 | ------- | -------- |
-| 0.1.0   | 12.4     |
+| 0.1.x   | 12.4     |
+
+Holyfin is made and tested on **Jellyfin 12.4**. Older versions are not tested. Jellyfin's styles
+are built from class names that can change between versions, so every week the theme is checked
+against the newest Jellyfin release. When something has changed, a new version of Holyfin follows
+and this table is updated.
 
 **Browsers.** The styled drop-down lists need Chrome or Edge 135 or newer. Elsewhere the browser's
 own list is shown, which is fully usable. Everything else works in current Chrome, Edge, Firefox and
 Safari.
 
-Jellyfin's styles are built from class names that can change between versions, so the table above is
-the version the theme was last looked at on. A check runs every week against the newest Jellyfin and
-opens an issue when something has drifted.
-
-## How it is kept working
-
-| Check | What it does | When |
-| ----- | ------------ | ---- |
-| `npm run lint` | stylelint with `stylelint-config-standard` | every push and pull request |
-| `python3 tools/check.py <jellyfin-web-dir>` | the classes the theme styles still exist in that Jellyfin; no new fixed blue; no rounded corners; every variable is defined | every push and pull request, and every Monday against the newest Jellyfin |
-
-The second check needs no running Jellyfin. The workflow takes the web client from the official image
-and compares text. It can also be run on your machine against any copy of the `jellyfin-web` folder.
-
-`tools/blue-baseline.json` holds how much fixed blue the Jellyfin it was made against has. When you
-have looked at a new Jellyfin and are happy with the theme on it, run
-`python3 tools/check.py <dir> --update-baseline` and commit the result.
-
-### After a Jellyfin update, look at it
-
-The checks find what has been renamed. What a page looks like, you check by eye:
-
-- [ ] Home: the rows, a poster, hovering a poster (red block behind it, light edge)
-- [ ] A library: the grid, the A-Z strip, the tabs in the top bar
-- [ ] A film page: the logo, the band with the title and buttons, the panel with video and audio
-- [ ] A drop-down list (subtitles): glass list, red tick, opens below the field
-- [ ] A dialog and a menu (the three dots)
-- [ ] The dashboard and a settings page: no blue left, square corners
-- [ ] The sign-in page
-
-Then change the table above and tag a new version.
+**Something looks off?** [Open an issue](https://github.com/roffaboy/holyfin/issues) with your
+Jellyfin version (Dashboard shows it) and, if you can, a screenshot. A page that still shows blue
+is the most useful thing to report.
 
 ## Contributing
 
-Issues and pull requests are welcome, especially a page that still shows blue or a class that moved.
-Please run `npm ci && npm run lint` and `python3 tools/check.py <jellyfin-web-dir>` first. The look
-follows HolyArrs, with square corners; changes that round things off are out of scope.
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). The look follows
+HolyArrs, with square corners; changes that round things off are out of scope.
 
 ## Credits
 
