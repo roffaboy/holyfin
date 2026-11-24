@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "description": "An unofficial dark Jellyfin theme inspired by HolyArrs: square corners, one red accent, Geist.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roffaboy/holyfin.git"
+  },
+  "homepage": "https://github.com/roffaboy/holyfin#readme",
+  "bugs": {
+    "url": "https://github.com/roffaboy/holyfin/issues"
+  },
   "scripts": {
     "lint": "stylelint theme.css",
     "check": "python3 tools/check.py"
