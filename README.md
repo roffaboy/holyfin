@@ -18,13 +18,12 @@ Screenshots (add them in docs/screenshots/, then remove this comment):
 ![Home](docs/screenshots/home.png)
 ![A film page](docs/screenshots/film.png)
 ![Hovering a poster](docs/screenshots/hover.png)
-![The dashboard](docs/screenshots/dashboard.png)
 -->
 
 ## What you get
 
-- **One accent.** Jellyfin's blue is gone everywhere: focus, links, switches, sliders, loading
-  circles, the dashboard. It is the same red throughout.
+- **One accent.** Jellyfin's blue is gone from the app: focus, links, switches, sliders, loading
+  circles. It is the same red throughout.
 - **Posters that react.** Hovering a poster lifts it 2 px, draws a light edge and puts a solid red block
   behind it. Watched titles get a green tick, counts are red, progress is red.
 - **A film page with room.** A taller band for the title and buttons, the logo above it, the video
@@ -37,7 +36,10 @@ Screenshots (add them in docs/screenshots/, then remove this comment):
 - **Square corners.** One setting (`--radius`) if you would rather have them round.
 - **A light look too.** It follows Jellyfin's own setting: pick **Light** under Settings, Display,
   Theme and Holyfin turns light (the light palette of HolyArrs); pick **Dark** and it is dark.
-  Every other Jellyfin theme shows the dark look. Each person chooses for themselves.
+  Every other Jellyfin theme shows the dark look. Each person chooses for themselves, and Jellyfin
+  keeps that choice per browser or device, so pick it once on each.
+- **Not the admin pages.** Jellyfin does not load custom CSS on the Dashboard (the admin pages),
+  as of 12.4, so those keep Jellyfin's own look, with its own Light or Dark under Settings, Display.
 
 ## Install
 
