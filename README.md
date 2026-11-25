@@ -14,13 +14,12 @@ the server, and it works in the web client and in the apps built on it.
 > Holyfin is unofficial. It is not made by, or affiliated with, HolyArrs. It borrows ideas and
 > colour values from how HolyArrs looks, no code.
 
-<!--
-Screenshots (add them in docs/screenshots/, then remove this comment):
+<p>
+  <img src="docs/screenshots/home-dark.jpg" alt="Holyfin, dark" width="49%">
+  <img src="docs/screenshots/home-light.jpg" alt="Holyfin, light" width="49%">
+</p>
 
-![Home](docs/screenshots/home.png)
-![A film page](docs/screenshots/film.png)
-![Hovering a poster](docs/screenshots/hover.png)
--->
+<sub>Demo content: the open movies of the [Blender Foundation](https://studio.blender.org/films/), under CC BY 3.0 and 4.0 (&copy; Blender Foundation | durian.blender.org, peach.blender.org and others).</sub>
 
 ## What you get
 
@@ -48,10 +47,10 @@ Screenshots (add them in docs/screenshots/, then remove this comment):
 In Jellyfin, open **Dashboard, General, Custom CSS** and add:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v0.1.0/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v0.2.1/theme.css");
 ```
 
-Name a version (`@v0.1.0`), not `@main`. A version never changes under you, and the CDN keeps it.
+Name a version (`@v0.2.1`), not `@main`. A version never changes under you, and the CDN keeps it.
 The newest one is on the [Releases page](https://github.com/roffaboy/holyfin/releases/latest), with
 what changed. Reload Jellyfin with Ctrl+Shift+R after you change it.
 
