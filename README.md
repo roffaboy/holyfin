@@ -39,6 +39,8 @@ the server, and it works in the web client and in the apps built on it.
   the focused poster grows 5% with a shadow and no border, the focused tab is a lighter pill with a red
   line, and the top bar has no blur, which a TV's chip finds costly. Only tested in a browser that
   poses as a TV and on one LG; an older TV browser may draw some of it differently.
+
+  <img src="docs/screenshots/tv.jpg" alt="Holyfin on a TV: the Movies page, the third poster focused: it grows a little and has a shadow, no border">
 - **A light look too.** It follows Jellyfin's own setting: pick **Light** under Settings, Display,
   Theme and Holyfin turns light (the light palette of HolyArrs); pick **Dark** and it is dark.
   Every other Jellyfin theme shows the dark look. Each person chooses for themselves, and Jellyfin
