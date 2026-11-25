@@ -292,7 +292,7 @@ h2 {
   letter-spacing: -.018em;
 }
 
-/* A little red in the headings, as in HolyArrs: a small bar before the title of a row, and the
+/* A little red in the headings, as in HolyArrs: a small bar before the title of a row; the
    title and its arrow turn red when the row is hovered. */
 .sectionTitle-cards::before {
   content: "";
@@ -307,6 +307,11 @@ h2 {
 }
 
 .sectionTitleTextButton .chevron_right {
+  color: var(--muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.sectionTitleTextButton:hover .chevron_right {
   color: var(--accent);
 }
 
@@ -614,20 +619,6 @@ a.cardImageContainer {
 .layout-tv .card:focus,
 .layout-tv .card:focus-within {
   contain: none !important;
-}
-
-/* The web client shows a red arrow after a row title (it is a link there); a TV has no link, so
-   the arrow is drawn here, to look the same. */
-.layout-tv .sectionTitle-cards::after {
-  content: "";
-  display: inline-block;
-  width: .36em;
-  height: .36em;
-  margin-left: .55em;
-  border-top: .13em solid var(--accent);
-  border-right: .13em solid var(--accent);
-  transform: rotate(45deg);
-  vertical-align: .08em;
 }
 
 /* On a TV (Jellyfin adds layout-tv) the remote has no pointer, so the focused card is shown the way
