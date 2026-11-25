@@ -4,8 +4,8 @@
     tools/check.py <jellyfin-web-dir> [--update-baseline]
 
 What it checks:
-  1. The stylesheet itself: balanced braces, every var(--x) is defined, no rounded corners,
-     no fixed Jellyfin blue.
+  1. The stylesheet itself: balanced braces, every var(--x) is defined, corners only from the radii of
+     HolyArrs (--r-*), no fixed Jellyfin blue.
   2. Drift: every class the theme styles still exists in that Jellyfin version.
   3. New blue: Jellyfin has not gained more fixed blue than the theme was made against
      (tools/blue-baseline.json; refresh it with --update-baseline after a version you have looked at).
@@ -42,8 +42,9 @@ def own_checks(css):
         if not name.startswith("--jf-"):
             problems.append(f"var({name}) is used but never defined")
     for value in re.findall(r"border-radius\s*:\s*([^;]+);", css):
-        if value.strip().replace("!important", "").strip() not in ("0", "var(--radius)"):
-            problems.append(f"border-radius: {value.strip()} (corners are meant to be square)")
+        v = value.strip().replace("!important", "").strip()
+        if v not in ("0", "inherit") and not re.fullmatch(r"var\(--r-(sm|btn|card|panel|modal|pill)\)", v):
+            problems.append(f"border-radius: {value.strip()} (use one of the radii --r-sm, --r-btn, --r-card, --r-panel, --r-modal, --r-pill)")
     for blue in BLUES:
         if blue in css.lower():
             problems.append(f"{blue} is written in the theme (use the accent)")
