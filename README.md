@@ -5,8 +5,8 @@
 <img src="docs/social-preview.png" alt="Holyfin: a dark and a light theme for Jellyfin">
 
 A calm theme for [Jellyfin](https://jellyfin.org), dark and light. Dark is near-black greys, light is
-white with soft greys; both have one red accent, square corners and
-[Geist](https://github.com/vercel/geist-font), after the look of
+white with soft greys; both have one red accent, the rounded corners and shadows of HolyArrs
+and [Geist](https://github.com/vercel/geist-font), after the look of
 [HolyArrs](https://github.com/HolyArrs/HolyArrs). Which one shows follows Jellyfin's own Theme
 setting.
 
@@ -22,8 +22,10 @@ the server, and it works in the web client and in the apps built on it.
 
 - **One accent.** Jellyfin's blue is gone from the app: focus, links, switches, sliders, loading
   circles. It is the same red throughout.
-- **Posters that react.** Hovering a poster lifts it 2 px, draws a light edge and puts a solid red block
-  behind it. Watched titles get a green tick, counts are red, progress is red.
+- **Posters that react.** Hovering a poster lifts it 3 px, with a deeper shadow and a fine edge (light in
+  the dark look, dark in the light one). Watched titles get a green tick, counts are red, progress is red.
+- **A little red in the headings.** A small red bar before the title of each row, and the title and its
+  arrow turn red when you hover it.
 - **A film page with room.** A taller band for the title and buttons, the logo above it, the video
   and audio details in a quiet panel with small capitals as labels.
 - **Glass where things open.** The top bar, menus and drop-down lists are blurred glass with a fine
@@ -31,7 +33,8 @@ the server, and it works in the web client and in the apps built on it.
 - **Geist, delivered with the theme.** Nothing is loaded from Google.
 - **Calm motion** in one set of durations and curves, and none at all for anyone who asked their
   system for less motion.
-- **Square corners.** One setting (`--radius`) if you would rather have them round.
+- **The shape of HolyArrs.** Rounded corners in the same sizes (6, 10, 12, 16 and 20 px) and its shadows;
+  set a radius to 0 in the tokens if you want it square.
 - **A light look too.** It follows Jellyfin's own setting: pick **Light** under Settings, Display,
   Theme and Holyfin turns light (the light palette of HolyArrs); pick **Dark** and it is dark.
   Every other Jellyfin theme shows the dark look. Each person chooses for themselves, and Jellyfin
@@ -44,10 +47,10 @@ the server, and it works in the web client and in the apps built on it.
 In Jellyfin, open **Dashboard, General, Custom CSS** and add:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v1.0.0/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v1.1.0/theme.css");
 ```
 
-Name a version (`@v1.0.0`), not `@main`. A version never changes under you, and the CDN keeps it.
+Name a version (`@v1.1.0`), not `@main`. A version never changes under you, and the CDN keeps it.
 The newest one is on the [Releases page](https://github.com/roffaboy/holyfin/releases/latest), with
 what changed. Reload Jellyfin with Ctrl+Shift+R after you change it.
 
@@ -72,7 +75,8 @@ Everything below the first section of `theme.css` reads from the tokens at the t
 | `--bg`, `--surface`, `--surface-2`, `--surface-3` | page and panel greys | `#0b0b0c` to `#2a2a2e` |
 | `--accent`, `--accent-fill` | the red, for text and icons, and for fills | `#ff453a`, `#d42d24` |
 | `--text`, `--muted`, `--faint` | text colours | `#f5f5f7`, `#a1a1a6`, `#7c7c80` |
-| `--radius` | corner radius of buttons, panels and fields | `0px` |
+| `--r-sm`, `--r-btn`, `--r-card`, `--r-panel`, `--r-modal` | corner radii: small things, buttons and fields, posters, menus and panels, dialogs | 6, 10, 12, 16, 20 px |
+| `--lift` | how far a poster rises on hover | `-3px` |
 | `--font` | the typeface | Geist |
 | `--dur-fast`, `--dur`, `--dur-slow` | how long motion takes | 150, 240, 360 ms |
 
@@ -83,6 +87,7 @@ face), change the tokens and import your copy.
 
 | Holyfin | Jellyfin |
 | ------- | -------- |
+| 1.1.x   | 12.4     |
 | 1.0.x   | 12.4     |
 
 Holyfin is made and tested on **Jellyfin 12.4**. Older versions are not tested. Jellyfin's styles
@@ -101,7 +106,7 @@ is the most useful thing to report.
 ## Contributing
 
 Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). The look follows
-HolyArrs, with square corners; changes that round things off are out of scope.
+HolyArrs, with its radii and shadows.
 
 ## Credits
 

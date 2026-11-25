@@ -1,7 +1,7 @@
 {
   "name": "holyfin",
   "private": true,
-  "description": "An unofficial dark and light Jellyfin theme inspired by HolyArrs: square corners, one red accent, Geist.",
+  "description": "An unofficial dark and light Jellyfin theme inspired by HolyArrs: rounded like HolyArrs, one red accent, Geist.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/roffaboy/holyfin.git"
