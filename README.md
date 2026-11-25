@@ -2,6 +2,8 @@
 
 [![Check](https://img.shields.io/github/actions/workflow/status/roffaboy/holyfin/check.yml?branch=main&style=flat&logo=githubactions&logoColor=white&label=Check)](https://github.com/roffaboy/holyfin/actions/workflows/check.yml) [![Release](https://img.shields.io/github/v/release/roffaboy/holyfin?style=flat&logo=github&logoColor=white&label=Release)](https://github.com/roffaboy/holyfin/releases/latest) [![Last commit](https://img.shields.io/github/last-commit/roffaboy/holyfin?style=flat&logo=github&logoColor=white&label=Last%20commit)](https://github.com/roffaboy/holyfin/commits/main) [![Renovate](https://img.shields.io/badge/Renovate-enabled-308BE3?style=flat&logo=renovate&logoColor=white)](renovate.json) [![Licence](https://img.shields.io/github/license/roffaboy/holyfin?style=flat&label=Licence)](LICENSE)
 
+<img src="docs/social-preview.png" alt="Holyfin: a dark and a light theme for Jellyfin">
+
 A calm theme for [Jellyfin](https://jellyfin.org), dark and light. Dark is near-black greys, light is
 white with soft greys; both have one red accent, square corners and
 [Geist](https://github.com/vercel/geist-font), after the look of
@@ -14,13 +16,7 @@ the server, and it works in the web client and in the apps built on it.
 > Holyfin is unofficial. It is not made by, or affiliated with, HolyArrs. It borrows ideas and
 > colour values from how HolyArrs looks, no code.
 
-<!--
-Screenshots (add them in docs/screenshots/, then remove this comment):
-
-![Home](docs/screenshots/home.png)
-![A film page](docs/screenshots/film.png)
-![Hovering a poster](docs/screenshots/hover.png)
--->
+<img src="docs/screenshots/overview.jpg" alt="Holyfin, dark behind and light in front: hovering a poster in the library, and a film page">
 
 ## What you get
 
@@ -48,10 +44,10 @@ Screenshots (add them in docs/screenshots/, then remove this comment):
 In Jellyfin, open **Dashboard, General, Custom CSS** and add:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v0.1.0/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v1.0.0/theme.css");
 ```
 
-Name a version (`@v0.1.0`), not `@main`. A version never changes under you, and the CDN keeps it.
+Name a version (`@v1.0.0`), not `@main`. A version never changes under you, and the CDN keeps it.
 The newest one is on the [Releases page](https://github.com/roffaboy/holyfin/releases/latest), with
 what changed. Reload Jellyfin with Ctrl+Shift+R after you change it.
 
@@ -87,8 +83,7 @@ face), change the tokens and import your copy.
 
 | Holyfin | Jellyfin |
 | ------- | -------- |
-| 0.2.x   | 12.4     |
-| 0.1.x   | 12.4 (dark only) |
+| 1.0.x   | 12.4     |
 
 Holyfin is made and tested on **Jellyfin 12.4**. Older versions are not tested. Jellyfin's styles
 are built from class names that can change between versions, so every week the theme is checked
@@ -111,6 +106,7 @@ HolyArrs, with square corners; changes that round things off are out of scope.
 ## Credits
 
 - Look: [HolyArrs](https://github.com/HolyArrs/HolyArrs) (colours and ideas, no code).
+- Screenshots: posters of the open movies of the [Blender Foundation](https://studio.blender.org/films/), under CC BY.
 - Font: [Geist](https://github.com/vercel/geist-font) by Vercel, under the SIL Open Font License. It is
   delivered with the theme in `fonts/` (with its licence, `fonts/OFL.txt`).
 
