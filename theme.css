@@ -390,6 +390,42 @@ a {
   background: var(--surface-3);
 }
 
+/* A TV is read from a sofa: Jellyfin makes its own text about 1.75 times the desktop size there, and
+   so do the sizes here. Everything else (spacing, corners) follows the text in em. */
+:root.layout-tv {
+  --t-large: 60px;
+  --t-title1: 49px;
+  --t-title2: 39px;
+  --t-title3: 33px;
+  --t-body: 26px;
+  --t-callout: 24px;
+  --t-subhead: 22px;
+  --t-footnote: 20px;
+}
+
+.layout-tv .headerTabs .emby-tab-button,
+.layout-tv .sectionTabs .emby-tab-button {
+  font-size: var(--t-callout);
+}
+
+/* The top bar is opaque here, so the page must start below it, not under it (Jellyfin lets a TV page
+   start under its transparent bar). */
+.layout-tv .skinHeader {
+  box-sizing: border-box;
+  height: 120px;
+
+  /* A TV's graphics chip is weak and the blur behind a bar is one of the dearest effects; the bar
+     is a solid step lighter than the page instead. */
+  background: var(--surface) !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.layout-tv .page,
+.layout-tv .libraryPage {
+  padding-top: 136px !important;
+}
+
 /* ---------- 4. Top bar and tabs ---------- */
 
 /* Glass a shade lighter than the page, blurred, with a fine line under it (as HolyArrs' bar). */
@@ -748,7 +784,7 @@ a.cardImageContainer {
 
 /* Layers instead of shadows, as in HolyArrs: the page, then the band and the panels a step lighter,
    each with a fine line. */
-.detailRibbon {
+:root:not(.layout-tv) .detailRibbon {
   background: var(--surface) !important;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
