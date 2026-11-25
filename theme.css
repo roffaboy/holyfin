@@ -300,7 +300,7 @@ h2 {
   margin-inline-end: .55em;
   border-radius: var(--r-sm);
   vertical-align: -.05em;
-  background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+  background: linear-gradient(var(--accent), rgb(var(--accent-rgb) / 30%));
 }
 
 .sectionTitleTextButton .chevron_right {
@@ -556,6 +556,30 @@ a.cardImageContainer {
 .card:focus-visible .cardBox.visualCardBox {
   transform: translateY(var(--lift));
   box-shadow: var(--shadow-lift) !important;
+}
+
+/* On a TV (Jellyfin adds layout-tv) the remote has no pointer, so the focused card is shown the way
+   the Android TV app does: it grows a little and gets a deep shadow, with no border. Jellyfin draws
+   its own thick border there (in the accent colour); it is made invisible, and the one-pixel edge and
+   the lift of the pointer look are switched off, so they do not fight the growth. */
+.layout-tv .card:focus > .cardBox {
+  transform: scale(1.08);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.layout-tv .card:focus .cardBox.visualCardBox,
+.layout-tv .card:focus .cardBox:not(.visualCardBox) .cardScalable {
+  border-color: transparent !important;
+  outline: 0 !important;
+  box-shadow: var(--shadow-lift) !important;
+}
+
+.layout-tv .card:focus .cardScalable {
+  transform: none;
+}
+
+.layout-tv .card:focus .cardScalable::after {
+  box-shadow: none;
 }
 
 .card-hoverable:active .cardScalable {
