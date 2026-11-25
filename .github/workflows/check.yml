@@ -19,9 +19,15 @@ permissions:
   contents: read
   issues: write
 
+# A newer push to the same branch or pull request makes the older run pointless.
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   css:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v7
@@ -33,6 +39,7 @@ jobs:
 
   jellyfin:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
       - name: Take the web client of the newest Jellyfin
