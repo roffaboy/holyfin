@@ -572,10 +572,6 @@ a.cardImageContainer {
   box-shadow: var(--shadow-lift) !important;
 }
 
-/* On a TV (Jellyfin adds layout-tv) the remote has no pointer, so the focused card is shown the way
-   the Android TV app does: it grows a little (5%) and gets a deep shadow, with no border. Jellyfin draws
-   its own thick border there (in the accent colour); it is made invisible, and the one-pixel edge and
-   the lift of the pointer look are switched off, so they do not fight the growth. */
 /* Jellyfin gives every card contain: content, which clips what is drawn outside the card's own box:
    the grown card lost its corners and its edge. Released while the card has focus. */
 .layout-tv .card:focus,
@@ -597,6 +593,10 @@ a.cardImageContainer {
   vertical-align: .08em;
 }
 
+/* On a TV (Jellyfin adds layout-tv) the remote has no pointer, so the focused card is shown the way
+   the Android TV app does: it grows a little (5%) and gets a deep shadow, with no border. Jellyfin draws
+   its own thick border there (in the accent colour); it is made invisible, and the one-pixel edge and
+   the lift of the pointer look are switched off, so they do not fight the growth. */
 .layout-tv .card:focus > .cardBox {
   transform: scale(1.05);
   transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
