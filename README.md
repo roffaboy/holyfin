@@ -16,12 +16,7 @@ the server, and it works in the web client and in the apps built on it.
 > Holyfin is unofficial. It is not made by, or affiliated with, HolyArrs. It borrows ideas and
 > colour values from how HolyArrs looks, no code.
 
-<p>
-  <img src="docs/screenshots/home-dark.jpg" alt="Holyfin, dark" width="49%">
-  <img src="docs/screenshots/home-light.jpg" alt="Holyfin, light" width="49%">
-</p>
-
-<sub>Demo content: the open movies of the [Blender Foundation](https://studio.blender.org/films/), under CC BY 3.0 and 4.0 (&copy; Blender Foundation | durian.blender.org, peach.blender.org and others).</sub>
+<img src="docs/screenshots/overview.jpg" alt="Holyfin, dark behind and light in front: hovering a poster in the library, and a film page">
 
 ## What you get
 
@@ -112,6 +107,7 @@ HolyArrs, with square corners; changes that round things off are out of scope.
 ## Credits
 
 - Look: [HolyArrs](https://github.com/HolyArrs/HolyArrs) (colours and ideas, no code).
+- Screenshots: posters of the open movies of the [Blender Foundation](https://studio.blender.org/films/), under CC BY.
 - Font: [Geist](https://github.com/vercel/geist-font) by Vercel, under the SIL Open Font License. It is
   delivered with the theme in `fonts/` (with its licence, `fonts/OFL.txt`).
 
