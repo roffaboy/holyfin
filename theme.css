@@ -98,6 +98,7 @@
   --scrim: rgb(0 0 0 / 60%);
   --hover: rgb(255 255 255 / 8%);
   --tab-active: rgb(255 255 255 / 7%);
+  --focus-fill: rgb(255 255 255 / 17%);
   --checked: rgb(255 255 255 / 12%);
   --color-scheme: dark;
   --mark-have: #1f9d48;
@@ -161,6 +162,7 @@
   --scrim: rgb(0 0 0 / 40%);
   --hover: rgb(0 0 0 / 5%);
   --tab-active: rgb(0 0 0 / 6%);
+  --focus-fill: rgb(0 0 0 / 12%);
   --checked: rgb(0 0 0 / 8%);
   --color-scheme: light;
   --shadow-lift: 0 2px 4px rgb(0 0 0 / 8%), 0 12px 28px rgb(0 0 0 / 14%), 0 0 0 1px var(--line);
@@ -290,21 +292,23 @@ h2 {
   letter-spacing: -.018em;
 }
 
-/* A little red in the headings, as in HolyArrs: a small bar before the title of a row, and the
-   title and its arrow turn red when the row is hovered. */
+/* A little red in the headings, as in HolyArrs: a small bar before the title of a row; the
+   title turns red when the row is hovered. */
 .sectionTitle-cards::before {
   content: "";
   display: inline-block;
   width: 4px;
   height: .8em;
-  margin-inline-end: .55em;
+  margin-right: .8em; /* older TV browsers do not know margin-inline-end */
+  margin-inline-end: .8em;
   border-radius: var(--r-sm);
   vertical-align: -.05em;
-  background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 30%, transparent));
+  background: linear-gradient(var(--accent), rgb(var(--accent-rgb) / 30%));
 }
 
+/* No arrow after a row title (Jellyfin shows one when the title is a link). */
 .sectionTitleTextButton .chevron_right {
-  color: var(--accent);
+  display: none;
 }
 
 .sectionTitleTextButton:hover .sectionTitle {
@@ -387,6 +391,43 @@ a {
   background: var(--surface-3);
 }
 
+/* A TV is read from a sofa: Jellyfin makes its own text about 1.75 times the desktop size there, and
+   so do the sizes here. Everything else (spacing, corners) follows the text in em. */
+:root.layout-tv {
+  --t-large: 60px;
+  --t-title1: 49px;
+  --t-title2: 39px;
+  --t-title3: 33px;
+  --t-body: 26px;
+  --t-callout: 24px;
+  --t-subhead: 22px;
+  --t-footnote: 20px;
+}
+
+.layout-tv .headerTabs .emby-tab-button,
+.layout-tv .sectionTabs .emby-tab-button {
+  margin: 0 8px; /* room for the focused tab, which grows a little, so two pills never touch */
+  font-size: var(--t-callout);
+}
+
+/* The top bar is opaque here, so the page must start below it, not under it (Jellyfin lets a TV page
+   start under its transparent bar). */
+.layout-tv .skinHeader {
+  box-sizing: border-box;
+  height: 120px;
+
+  /* A TV's graphics chip is weak and the blur behind a bar is one of the dearest effects; the bar
+     is a solid step lighter than the page instead. */
+  background: var(--surface) !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.layout-tv .page,
+.layout-tv .libraryPage {
+  padding-top: 136px !important;
+}
+
 /* ---------- 4. Top bar and tabs ---------- */
 
 /* Glass a shade lighter than the page, blurred, with a fine line under it (as HolyArrs' bar). */
@@ -415,6 +456,17 @@ a {
 .skinHeader .MuiButton-text:hover {
   background: var(--hover) !important;
   color: var(--text) !important;
+}
+
+/* With a remote (a TV) there is no hover: the tab that has focus gets the same pill, so you can see
+   where you are, and a red line under it. */
+.headerTabs .emby-tab-button:focus,
+.sectionTabs .emby-tab-button:focus {
+  background: var(--focus-fill) !important;
+  color: var(--text) !important;
+  box-shadow: inset 0 -2px 0 var(--accent) !important;
+  outline: 0;
+  transform: scale(1.06) !important; /* Jellyfin's own growth is 1.3, far too much */
 }
 
 /* The chosen tab: a soft grey step with a red line under it. */
@@ -558,6 +610,37 @@ a.cardImageContainer {
   box-shadow: var(--shadow-lift) !important;
 }
 
+/* Jellyfin gives every card contain: content, which clips what is drawn outside the card's own box:
+   the grown card lost its corners and its edge. Released while the card has focus. */
+.layout-tv .card:focus,
+.layout-tv .card:focus-within {
+  contain: none !important;
+}
+
+/* On a TV (Jellyfin adds layout-tv) the remote has no pointer, so the focused card is shown the way
+   the Android TV app does: it grows a little (5%) and gets a deep shadow, with no border. Jellyfin draws
+   its own thick border there (in the accent colour); it is made invisible, and the one-pixel edge and
+   the lift of the pointer look are switched off, so they do not fight the growth. */
+.layout-tv .card:focus > .cardBox {
+  transform: scale(1.05);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+
+.layout-tv .card:focus .cardBox.visualCardBox,
+.layout-tv .card:focus .cardBox:not(.visualCardBox) .cardScalable {
+  border-color: transparent !important;
+  outline: 0 !important;
+  box-shadow: var(--shadow-lift) !important;
+}
+
+.layout-tv .card:focus .cardScalable {
+  transform: none;
+}
+
+.layout-tv .card:focus .cardScalable::after {
+  box-shadow: none;
+}
+
 .card-hoverable:active .cardScalable {
   transform: scale(.98);
   transition-duration: 90ms;
@@ -689,7 +772,7 @@ a.cardImageContainer {
 
 /* Layers instead of shadows, as in HolyArrs: the page, then the band and the panels a step lighter,
    each with a fine line. */
-.detailRibbon {
+:root:not(.layout-tv) .detailRibbon {
   background: var(--surface) !important;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);

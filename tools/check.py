@@ -5,7 +5,7 @@
 
 What it checks:
   1. The stylesheet itself: balanced braces, every var(--x) is defined, corners only from the radii of
-     HolyArrs (--r-*), no fixed Jellyfin blue.
+     HolyArrs (--r-*), no fixed Jellyfin blue, no color-mix() (old TV browsers).
   2. Drift: every class the theme styles still exists in that Jellyfin version.
   3. New blue: Jellyfin has not gained more fixed blue than the theme was made against
      (tools/blue-baseline.json; refresh it with --update-baseline after a version you have looked at).
@@ -45,6 +45,9 @@ def own_checks(css):
         v = value.strip().replace("!important", "").strip()
         if v not in ("0", "inherit") and not re.fullmatch(r"var\(--r-(sm|btn|card|panel|modal|pill)\)", v):
             problems.append(f"border-radius: {value.strip()} (use one of the radii --r-sm, --r-btn, --r-card, --r-panel, --r-modal, --r-pill)")
+    if "color-mix(" in css:
+        problems.append("color-mix() is written in the theme: a TV's older browser drops the whole declaration "
+                        "(the red bar before row titles vanished that way); use rgb(var(--accent-rgb) / 30%) or give a fallback first")
     for blue in BLUES:
         if blue in css.lower():
             problems.append(f"{blue} is written in the theme (use the accent)")
