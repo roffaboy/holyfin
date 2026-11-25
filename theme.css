@@ -405,6 +405,7 @@ a {
 
 .layout-tv .headerTabs .emby-tab-button,
 .layout-tv .sectionTabs .emby-tab-button {
+  margin: 0 8px; /* room for the focused tab, which grows a little, so two pills never touch */
   font-size: var(--t-callout);
 }
 
