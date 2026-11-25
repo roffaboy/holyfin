@@ -24,8 +24,8 @@ the server, and it works in the web client and in the apps built on it.
   circles. It is the same red throughout.
 - **Posters that react.** Hovering a poster lifts it 3 px, with a deeper shadow and a fine edge (light in
   the dark look, dark in the light one). Watched titles get a green tick, counts are red, progress is red.
-- **A little red in the headings.** A small red bar before the title of each row, and the title and its
-  arrow turn red when you hover it.
+- **A little red in the headings.** A small red bar before the title of each row, and the title turns red
+  when you hover it.
 - **A film page with room.** A taller band for the title and buttons, the logo above it, the video
   and audio details in a quiet panel with small capitals as labels.
 - **Glass where things open.** The top bar, menus and drop-down lists are blurred glass with a fine
@@ -35,6 +35,10 @@ the server, and it works in the web client and in the apps built on it.
   system for less motion.
 - **The shape of HolyArrs.** Rounded corners in the same sizes (6, 10, 12, 16 and 20 px) and its shadows;
   set a radius to 0 in the tokens if you want it square.
+- **Made for a TV as well.** On a TV (the LG, Samsung and other Jellyfin apps) the text is TV-sized,
+  the focused poster grows 5% with a shadow and no border, the focused tab is a lighter pill with a red
+  line, and the top bar has no blur, which a TV's chip finds costly. Only tested in a browser that
+  poses as a TV and on one LG; an older TV browser may draw some of it differently.
 - **A light look too.** It follows Jellyfin's own setting: pick **Light** under Settings, Display,
   Theme and Holyfin turns light (the light palette of HolyArrs); pick **Dark** and it is dark.
   Every other Jellyfin theme shows the dark look. Each person chooses for themselves, and Jellyfin
