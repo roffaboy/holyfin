@@ -417,6 +417,16 @@ a {
   color: var(--text) !important;
 }
 
+/* With a remote (a TV) there is no hover: the tab that has focus gets the same pill, so you can see
+   where you are, and a red line under it. */
+.headerTabs .emby-tab-button:focus,
+.sectionTabs .emby-tab-button:focus {
+  background: var(--tab-active) !important;
+  color: var(--text) !important;
+  box-shadow: inset 0 -2px 0 var(--accent) !important;
+  outline: 0;
+}
+
 /* The chosen tab: a soft grey step with a red line under it. */
 .headerTabs .emby-tab-button-active,
 .sectionTabs .emby-tab-button-active,
