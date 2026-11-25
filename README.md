@@ -44,10 +44,10 @@ the server, and it works in the web client and in the apps built on it.
 In Jellyfin, open **Dashboard, General, Custom CSS** and add:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v0.2.1/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v1.0.0/theme.css");
 ```
 
-Name a version (`@v0.2.1`), not `@main`. A version never changes under you, and the CDN keeps it.
+Name a version (`@v1.0.0`), not `@main`. A version never changes under you, and the CDN keeps it.
 The newest one is on the [Releases page](https://github.com/roffaboy/holyfin/releases/latest), with
 what changed. Reload Jellyfin with Ctrl+Shift+R after you change it.
 
@@ -83,8 +83,7 @@ face), change the tokens and import your copy.
 
 | Holyfin | Jellyfin |
 | ------- | -------- |
-| 0.2.x   | 12.4     |
-| 0.1.x   | 12.4 (dark only) |
+| 1.0.x   | 12.4     |
 
 Holyfin is made and tested on **Jellyfin 12.4**. Older versions are not tested. Jellyfin's styles
 are built from class names that can change between versions, so every week the theme is checked
