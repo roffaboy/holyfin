@@ -1,0 +1,4 @@
+# The HolyArrs release Holyfin was last compared with. When HolyArrs publishes a newer one, Renovate
+# opens a PR that changes the number below. Look at what changed in HolyArrs' look (colours, shapes),
+# adjust theme.css if needed, and merge. It never merges by itself.
+holyarrs 1.3.1

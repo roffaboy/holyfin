@@ -1,12 +1,43 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", "schedule:weekly", "group:all"],
+  "extends": [
+    "config:recommended",
+    "schedule:weekly",
+    "group:all"
+  ],
   "packageRules": [
     {
+      "description": "A new HolyArrs release is a reason to compare the look, so it waits for a review",
+      "matchDepNames": [
+        "HolyArrs/HolyArrs"
+      ],
+      "automerge": false,
+      "groupName": "HolyArrs",
+      "commitMessageTopic": "HolyArrs look"
+    },
+    {
       "description": "Patch updates merge by themselves once the checks pass",
-      "matchUpdateTypes": ["patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "patch",
+        "pin",
+        "digest"
+      ],
       "groupName": "patch updates",
       "automerge": true
+    }
+  ],
+  "customManagers": [
+    {
+      "description": "The HolyArrs release this theme was last compared with (tools/holyarrs-version.txt)",
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/^tools/holyarrs-version\\.txt$/"
+      ],
+      "matchStrings": [
+        "^holyarrs (?<currentValue>\\d+\\.\\d+\\.\\d+)$"
+      ],
+      "depNameTemplate": "HolyArrs/HolyArrs",
+      "datasourceTemplate": "github-releases"
     }
   ]
 }
