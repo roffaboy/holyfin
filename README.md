@@ -53,12 +53,14 @@ the server, and it works in the web client and in the apps built on it.
 In Jellyfin, open **Dashboard, General, Custom CSS** and add:
 
 ```css
-@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v1.1.0/theme.css");
+@import url("https://cdn.jsdelivr.net/gh/roffaboy/holyfin@v1.2.0/theme.css");
 ```
 
-Name a version (`@v1.1.0`), not `@main`. A version never changes under you, and the CDN keeps it.
+Name a version (`@v1.2.0`), not `@main`. A version never changes under you, and the CDN keeps it.
 The newest one is on the [Releases page](https://github.com/roffaboy/holyfin/releases/latest), with
-what changed. Reload Jellyfin with Ctrl+Shift+R after you change it.
+what changed. Reload Jellyfin with Ctrl+Shift+R after you change it. A TV app keeps the old file
+until the address is new, so a new version number (not a branch) is what makes it fetch the change;
+restart the app after.
 
 With a tool that sets Jellyfin's branding for you (for example Ansible), put that one line in the
 Custom CSS setting.
@@ -93,6 +95,7 @@ face), change the tokens and import your copy.
 
 | Holyfin | Jellyfin |
 | ------- | -------- |
+| 1.2.x   | 12.4     |
 | 1.1.x   | 12.4     |
 
 Holyfin is made and tested on **Jellyfin 12.4**. Older versions are not tested. Jellyfin's styles
