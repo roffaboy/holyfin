@@ -1,0 +1,38 @@
+name: Something looks wrong
+description: A page, menu or control that looks off, or still shows Jellyfin's blue
+labels: [bug]
+body:
+  - type: input
+    id: jellyfin
+    attributes:
+      label: Jellyfin version
+      description: Dashboard shows it.
+      placeholder: "12.4.0"
+    validations:
+      required: true
+  - type: input
+    id: holyfin
+    attributes:
+      label: Holyfin version
+      description: The tag in your Custom CSS line, for example v0.2.1.
+    validations:
+      required: true
+  - type: dropdown
+    id: look
+    attributes:
+      label: Which look
+      options: [Dark, Light, Both]
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser or app
+      placeholder: Firefox 140, Jellyfin Android, ...
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong, and where
+      description: The page address (the part after #) helps. A screenshot is the most useful thing.
+    validations:
+      required: true
